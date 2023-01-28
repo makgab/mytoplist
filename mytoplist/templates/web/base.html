@@ -1,0 +1,31 @@
+{% load static %}
+<html>
+    <head>
+        <title>MyTopList :)</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{% static 'css/my.css' %}">
+    </head>
+    <body>
+        <div class="page-header">
+            {% if user.is_authenticated %}
+                <p>Login: {{ user.username }}</p>
+                <a href="{% url 'logout' %}">Log Out</a>
+                <a href="{% url 'song_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            {% else %}
+                <p>You are not logged in</p>
+                <a href="{% url 'login' %}">Log In</a>
+            {% endif %}
+            <h1><a href="/">MyTopList 35</a></h1>
+        </div>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                {% block content %}
+                {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

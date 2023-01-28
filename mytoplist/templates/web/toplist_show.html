@@ -1,0 +1,11 @@
+{% extends 'web/base.html' %}
+
+{% block content %}
+    {% for x in content %}
+        <iframe width="400" height="300" src="{{x.video_url}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+        <h1>#{{ x.position  }} <a href="{% url 'song_detail' pk=x.pk %}">{{ x.author }}</a></h1>
+        <p class="song">{{ x.title  }}</p>
+        <hr>
+    {% endfor %}
+{% endblock %}
